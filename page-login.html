@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta content="IE=edge" http-equiv="X-UA-Compatible">
+	<meta content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no, width=device-width" name="viewport">
+	<title>Login - 报修平台Ver3.0.1</title>
+
+	<!-- css -->
+	<link href="../css/base.css" rel="stylesheet">
+
+	<!-- css for doc -->
+	<link href="../css/project.min.css" rel="stylesheet">
+
+	<!-- Loading -->
+	<script src="https://api.geetest.com/get.php?callback=initCaptcha"></script>
+
+	<script>
+		function (config) {
+			gt: "3e33746d6ffad9ac24e5664766204377",
+			challenge: "3e33746d6ffad9ac24e5664766204377",
+			product: "float",
+		};
+	    // 当geetest库加载好后回调initCaptcha
+	    // 注意initCaptcha必须在全局作用域下定义
+	    var initCaptcha = function () {
+
+	        var captchaOjb = new Geetest(config);
+
+	        captchaObj.appendTo("#captcha-box");
+
+	        captchaObj.onSuccess(function () {
+	            // 成功回调
+	        });
+
+	        captchaObj.getValidate(); // 获取成功后的验证信息，失败是返回false
+	    };
+
+	</script>
+	<script src="../js/jquery.js"></script>
+	<link rel="stylesheet" href="../xLoader/css/xloader.css">
+	<script type="text/javascript">
+		$("#xLoader").fadeIn(300);
+	   window.onload=function(){  
+        $("#xLoader").fadeOut(300);
+		};
+  	</script>
+	<style>
+		
+		#xLoader{
+			padding: 20px;
+		    min-width: 450px;
+		    min-height: 180px;
+		    background-color: #eee;
+		    position: fixed;
+		}
+	</style>
+	<!-- ... -->
+</head>
+<div id="xLoader">
+	<div class="google-spin-wrapper">
+		<div class="google-spin">
+		</div>
+	</div>
+</div>
+<body class="page-brand">
+	<header class="header header-brand">
+		<a class="header-logo">报修平台<small>Ver3.0.1</small></a>
+	</header>
+	<main class="content">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-4 col-lg-push-4 col-sm-6 col-sm-push-3">
+					<section class="content-inner">
+						<div class="card-wrap">
+							<div class="card">
+								<div class="card-main">
+									<div class="card-header">
+										<div class="card-inner">
+											<h1 class="card-heading">登陆</h1>
+										</div>
+									</div>
+									<div class="card-inner">
+										<p class="text-center">
+											<span class="avatar avatar-inline avatar-lg">
+												<img alt="Login" src="../images/users/avatar-001.jpg">
+											</span>
+										</p>
+										<form class="form" method="POST" action="login.php?action=login">
+											<div class="form-group form-group-label">
+												<div class="row">
+													<div class="col-md-10 col-md-push-1">
+														<label class="floating-label" for="doc_login_username">用户名</label>
+														<input class="form-control" id="doc_login_username" name="username" type="text">
+													</div>
+												</div>
+											</div>
+											<div class="form-group form-group-label">
+												<div class="row">
+													<div class="col-md-10 col-md-push-1">
+														<label class="floating-label" for="doc_login_password">密码</label>
+														<input class="form-control" id="doc_login_password" name="password" type="password">
+													</div>
+												</div>
+											</div>
+											<div class="form-group">
+												<div class="row">
+													<div class="col-md-10 col-md-push-1">
+													<button id="login" type="submit" class="btn btn-block waves-attach waves-button">登入</button>
+													</div>
+												</div>
+											</div>
+										</form>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="clearfix">
+							<p class="margin-no-top pull-left"><a class="btn btn-flat btn-blue waves-attach" href="index.html">回到前台</a></p>
+							<p class="margin-no-top pull-right"><a class="btn btn-flat btn-blue waves-attach" href="register.html">加入我们</a></p>
+						</div>
+					</section>
+				</div>
+			</div>
+		</div>
+	</main>
+	<footer class="footer">
+		<div class="container">
+			<p>Copyright © 2016 ByDisk Developers</p>
+		</div>
+	</footer>
+
+	<!-- js -->
+	<script src="../js/base.min.js"></script>
+
+	<!-- 谷歌统计 -->
+	<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	  ga('create', 'UA-74730081-2', 'auto');
+	  ga('send', 'pageview');
+
+	</script>
+	<!-- js for doc -->
+	<script src="../js/project.min.js"></script>
+</body>
+</html>

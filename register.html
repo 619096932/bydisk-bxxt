@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta content="IE=edge" http-equiv="X-UA-Compatible">
+	<meta content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no, width=device-width" name="viewport">
+	<title>加入我们 - 报修平台Ver3.0.1</title>
+
+	<!-- css -->
+	<link href="../css/base.css" rel="stylesheet">
+
+	<!-- css for doc -->
+	<link href="../css/project.min.css" rel="stylesheet">
+	
+	<!-- Loading -->
+	<script src="../js/jquery.js"></script>
+	<link rel="stylesheet" href="../xLoader/css/xloader.css">
+	<script type="text/javascript">
+		$("#xLoader").fadeIn(300);
+	   window.onload=function(){  
+        $("#xLoader").fadeOut(300);
+		};
+  	</script>
+	<style>
+		
+		#xLoader{
+			padding: 20px;
+		    min-width: 450px;
+		    min-height: 180px;
+		    background-color: #eee;
+		    position: fixed;
+		}
+	</style>
+	<!-- ... -->
+</head>
+<div id="xLoader">
+	<div class="google-spin-wrapper">
+		<div class="google-spin">
+		</div>
+	</div>
+</div>
+<body class="page-brand">
+	<header class="header header-transparent header-waterfall">
+		<ul class="nav nav-list pull-left">
+			<li>
+				<a data-toggle="menu" href="#doc_menu">
+					<span class="icon icon-lg">menu</span>
+				</a>
+			</li>
+		</ul>
+		<a class="header-affix-hide header-logo margin-left-no margin-right-no" data-offset-top="213" data-spy="affix" href="index.html">报修平台<small>Ver3.0.1</small></a>
+		<a class="header-affix header-logo margin-left-no margin-right-no" data-offset-top="213" data-spy="affix">报修平台<small>Ver3.0.1</small></a>
+		<!--<ul class="nav nav-list pull-right visible-xx-block">
+			<li class="dropdown margin-right">
+				<a class="dropdown-toggle padding-left-no padding-right-no" data-toggle="dropdown">
+					<span class="access-hide">John Smith</span>
+					<span class="avatar avatar-sm"><img alt="alt text for John Smith avatar" src="../images/users/avatar-001.jpg"></span>
+				</a>
+				<ul class="dropdown-menu">
+					<li>
+						<a class="padding-right-lg waves-attach" href="javascript:void(0)"><span class="icon icon-lg margin-right">account_box</span>Profile Settings</a>
+					</li>
+					<li>
+						<a class="padding-right-lg waves-attach" href="javascript:void(0)"><span class="icon icon-lg margin-right">add_to_photos</span>Upload Photo</a>
+					</li>
+					<li>
+						<a class="padding-right-lg waves-attach" href="page-login.html"><span class="icon icon-lg margin-right">exit_to_app</span>Logout</a>
+					</li>
+				</ul>
+			</li>
+		</ul>-->
+	</header>
+	<nav aria-hidden="true" class="menu" id="doc_menu" tabindex="-1">
+		<div class="menu-scroll">
+			<div class="menu-content">
+				<a class="menu-logo">报修平台<small>Ver3.0.1</small></a>
+				<ul class="nav">
+					<li>
+						<a class="waves-attach" href="https://developers.bydisk.com/">回到首页</a>
+					</li>
+					<li>
+						<a class="waves-attach" href="index.html">报修页面</a>
+					</li>
+					<li>
+						<a class="waves-attach" href="page-login.html">前往后台</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+	<main class="content">
+		<div class="content-heading">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-6 col-lg-offset-3 col-md-8 col-md-offset-2">
+						<h1 class="heading">加入我们</h1>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-6 col-lg-offset-3 col-md-8 col-md-offset-2">
+					<section class="content-inner margin-top-no">
+						
+						<div class="card">
+							<div class="card-main">
+								<div class="card-inner">
+									<p>全部都是必填项</p>
+									<p>All is required.</p>
+								</div>
+								
+							</div>
+						</div>
+						<h2 class="content-sub-heading"></h2>
+						<div class="card">
+							<div class="card-main">
+								<div class="card-inner">
+									<div class="tab-content">
+										<div class="tab-pane fade active in" id="doc_tab">
+											<p>请在下方填写您的个人信息，全部都是必填项。</p>
+											<form action="engine.php?action=register_user" method="POST" >
+											<fieldset>
+												<div class="form-group form-group-label">
+													<label class="floating-label" for="doc_floating_label_name">真实姓名</label>
+													<input name="devname" class="form-control" id="doc_floating_label_name" type="text" required onkeyup="value=value.replace(/[^\a-z\A-Z\0-9\u4E00-\u9FA5]/g,'')" minlength="2" maxlength="24">
+												</div>
+
+												<div class="form-group form-group-label">
+													<label class="floating-label" for="doc_floating_label_name">账号</label>
+													<input name="us" class="form-control" id="doc_floating_label_name" type="text" required onkeyup="value=value.replace(/[^\a-z\A-Z\0-9]/g,'')" minlength="8" maxlength="24">
+												</div>
+
+												<div class="form-group form-group-label">
+													<label class="floating-label" for="doc_floating_label_name">密码(弱密码将被审核拒绝)</label>
+													<input name="pw" class="form-control" id="doc_floating_label_name" type="password" required onkeyup="value=value.replace(/[^\a-z\A-Z\0-9]/g,'')" minlength="8" maxlength="24">
+												</div>
+
+												<div class="form-group form-group-label">
+													<label class="floating-label" for="doc_floating_label_name">邮箱地址(用于接收审核结果)</label>
+													<input name="em" class="form-control" id="doc_floating_label_name" type="text" required onkeyup="value=value.replace(/[^\a-z\0-9\@\.]/g,'')" minlength="5" maxlength="24">
+												</div>
+
+												<div class="form-group form-group-label">
+													<label class="floating-label" for="doc_floating_label_RGID">手机号码</label>
+													<input name="phone" class="form-control" id="doc_floating_label_RGID" type="number" required onkeyup="value=value.replace(/[^/d/0-9]/g,'') "onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^/d/0-9]/g,''))" minlength="9" maxlength="16" >
+												</div>
+
+												<div class="form-group form-group-label">
+													<label class="floating-label" for="doc_floating_label_RGID">锐捷账号</label>
+													<input name="card" class="form-control" id="doc_floating_label_RGID" type="number" required onkeyup="value=value.replace(/[^/d/0-9]/g,'') "onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^/d/0-9]/g,''))" minlength="9" maxlength="16" >
+												</div>
+
+												<div class="form-group form-group-label">
+													<label class="floating-label" for="doc_floating_label_name">自我介绍</label>
+													<textarea name="jc" class="form-control" id="doc_floating_label_example_textarea_gzms" rows="3" required minlength="16" maxlength="3200" onkeyup="value=value.replace(/[^\a-z\A-Z\0-9\u4E00-\u9FA5\@\.]/g,'')"></textarea>
+												</div>
+
+												<button type="submit" class="btn btn-block waves-attach waves-button waves-effect">提交</button>
+								      			</fieldset>
+											</form>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>	
+					</section>
+				</div>
+			</div>
+		</div>
+	</main>
+	<footer class="footer">
+		<div class="container">
+			<p>Copyright © 2016 ByDisk Developers</p>
+		</div>
+	</footer>
+	<div class="fbtn-container">
+		<div class="fbtn-inner">
+			<a class="fbtn fbtn-brand-accent fbtn-lg" data-toggle="dropdown"><span class="fbtn-text">Links</span><span class="fbtn-ori icon">apps</span><span class="fbtn-sub icon">close</span></a>
+			<div class="fbtn-dropdown">
+				<a class="fbtn" href="https://developers.bydisk.com/" target="_blank"><span class="fbtn-text">开发者社区主页</span><span class="icon">home</span></a>
+				<a class="fbtn fbtn-brand" href="http://weibo.com/347898945" target="_blank"><span class="fbtn-text">关注站长微博</span><span class="icon">share</span></a>
+			</div>
+		</div>
+	</div>
+
+	<!-- js -->
+	<script src="../js/base.min.js"></script>
+
+	<!-- 谷歌统计 -->
+	<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	  ga('create', 'UA-74730081-2', 'auto');
+	  ga('send', 'pageview');
+
+	</script>
+	<!-- js for doc -->
+	<script src="../js/project.min.js"></script>
+</body>
+</html>

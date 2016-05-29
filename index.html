@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta content="IE=edge" http-equiv="X-UA-Compatible">
+	<meta content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no, width=device-width" name="viewport">
+	<title>报修与查询 - 报修平台Ver3.0.1</title>
+	<meta name="keywords" content="报修平台,白云学院,白云工商,bydisk">
+	<meta name="description" content="这是一套适合大学校园的计算机维修的管理系统。具有完整的提交 处理 检查 登陆 注册 查询功能">
+	<!-- css -->
+	<link href="../css/base.css" rel="stylesheet">
+
+	<!-- css for doc -->
+	<link href="../css/project.min.css" rel="stylesheet">
+	
+	<!-- Loading -->
+	<script src="../js/jquery.js"></script>
+	<link rel="stylesheet" href="../xLoader/css/xloader.css">
+	<script type="text/javascript">
+		$("#xLoader").fadeIn(300);
+	   window.onload=function(){  
+        $("#xLoader").fadeOut(300);
+		};
+  	</script>
+	<style>
+		#xLoader{
+			padding: 20px;
+		    min-width: 450px;
+		    min-height: 180px;
+		    background-color: #eee;
+		    position: fixed;
+		}
+	</style>
+	<!-- ... -->
+	<!-- reg -->
+	<script type="text/javascript">
+	function addformSubmit()
+	{
+	document.getElementById("reg_add").submit()
+	}
+	</script>
+	<script type="text/javascript">
+	function checkformSubmit()
+	{
+	document.getElementById("reg_check").submit()
+	}
+	</script>
+	<!-- ... -->
+</head>
+<body class="page-brand">
+<div id="xLoader">
+	<div class="google-spin-wrapper">
+		<div class="google-spin">
+		</div>
+	</div>
+</div>
+	<header class="header header-transparent header-waterfall">
+		<ul class="nav nav-list pull-left">
+			<li>
+				<a data-toggle="menu" href="#doc_menu">
+					<span class="icon icon-lg">menu</span>
+				</a>
+			</li>
+		</ul>
+		<a class="header-affix-hide header-logo margin-left-no margin-right-no" data-offset-top="213" data-spy="affix" href="index.html">报修平台<small>Ver3.0.1</small></a>
+		<a class="header-affix header-logo margin-left-no margin-right-no" data-offset-top="213" data-spy="affix">报修平台<small>Ver3.0.1</small></a>
+		<!--<ul class="nav nav-list pull-right visible-xx-block">
+			<li class="dropdown margin-right">
+				<a class="dropdown-toggle padding-left-no padding-right-no" data-toggle="dropdown">
+					<span class="access-hide">John Smith</span>
+					<span class="avatar avatar-sm"><img alt="alt text for John Smith avatar" src="../images/users/avatar-001.jpg"></span>
+				</a>
+				<ul class="dropdown-menu">
+					<li>
+						<a class="padding-right-lg waves-attach" href="javascript:void(0)"><span class="icon icon-lg margin-right">account_box</span>Profile Settings</a>
+					</li>
+					<li>
+						<a class="padding-right-lg waves-attach" href="javascript:void(0)"><span class="icon icon-lg margin-right">add_to_photos</span>Upload Photo</a>
+					</li>
+					<li>
+						<a class="padding-right-lg waves-attach" href="page-login.html"><span class="icon icon-lg margin-right">exit_to_app</span>Logout</a>
+					</li>
+				</ul>
+			</li>
+		</ul>-->
+	</header>
+	<nav aria-hidden="true" class="menu" id="doc_menu" tabindex="-1">
+		<div class="menu-scroll">
+			<div class="menu-content">
+				<a class="menu-logo">报修平台<small>Ver3.0.1</small></a>
+				<ul class="nav">
+					<li>
+						<a class="waves-attach" href="https://developers.bydisk.com/">回到首页</a>
+					</li>
+					<li>
+						<a class="waves-attach" href="page-login.html">前往后台</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+	<main class="content">
+		<div class="content-heading">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-6 col-lg-offset-3 col-md-8 col-md-offset-2">
+						<h1 class="heading">报修与查询</h1>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-6 col-lg-offset-3 col-md-8 col-md-offset-2">
+					<section class="content-inner margin-top-no">
+						
+						<div class="card">
+							<div class="card-main">
+								<div class="card-inner">
+									<p>您可以在这里选择报修或者查询维修状态</p>
+									<p>You can choose to repair or maintenance query here.</p>
+								</div>
+								
+							</div>
+						</div>
+						<h2 class="content-sub-heading"></h2>
+						<div class="card">
+							<div class="card-main">
+								<nav class="margin-top-no tab-nav">
+									<ul class="nav nav-justified">
+										<li class="active">
+											<a class="waves-attach waves-effect" data-toggle="tab" href="#doc_tab_example_1" aria-expanded="true">我想要报修</a>
+										</li>
+										<li class="">
+											<a class="waves-attach waves-effect" data-toggle="tab" href="#doc_tab_example_2" aria-expanded="false">我想要查询</a>
+										</li>	
+									</ul>
+								<div class="tab-nav-indicator" style="left: 424px; right: 0px;"></div></nav>
+								<div class="card-inner">
+									<div class="tab-content">
+										<div class="tab-pane fade active in" id="doc_tab_example_1">
+											<p>请在下方填写您的报修单信息</p>
+											<form id="reg_add" action="engine.php?action=register" method="POST" >
+											<fieldset>
+												<div class="form-group form-group-label">
+													<label class="floating-label" for="doc_floating_label_name">姓名</label>
+													<input name="name" class="form-control" id="doc_floating_label_name" type="text" required onkeyup="value=value.replace(/[^\a-z\A-Z\0-9\u4E00-\u9FA5]/g,'')" minlength="2" maxlength="24">
+												</div>
+
+												<div class="form-group form-group-label">
+													<label class="floating-label" for="doc_floating_label_RGID">锐捷账号</label>
+													<input name="RGID" class="form-control" id="doc_floating_label_RGID" type="number" required onkeyup="value=value.replace(/[^/d/0-9]/g,'') "onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^/d/0-9]/g,''))" maxlength="16" minlength="9">
+												</div>
+
+												<div class="form-group">
+													<div class="checkbox checkbox-adv checkbox-inline">
+														<label for="doc_checkbox_example_1_disabled">
+															<input class="access-hide" disabled="" id="doc_checkbox_example_1" name="doc_checkbox_example" type="checkbox" checked="">东校区
+															<span class="checkbox-circle"></span><span class="checkbox-circle-check"></span><span class="checkbox-circle-icon icon">done</span>
+														</label>
+													</div>
+													<div class="checkbox checkbox-adv checkbox-inline disabled">
+														<label for="doc_checkbox_example_2_disabled">
+															<input class="access-hide" disabled="" id="doc_checkbox_example_2_disabled" name="doc_checkbox_example_disabled" type="checkbox" >西校区
+															<span class="checkbox-circle"></span><span class="checkbox-circle-check"></span><span class="checkbox-circle-icon icon">done</span>
+														</label>
+													</div>
+												</div>
+
+												<div class="form-group form-group-label">
+												<label class="floating-label" for="doc_floating_label_example_select_area">宿舍区域</label>
+												<select name="area" class="form-control" id="doc_floating_label_example_select_area" minlength="5">
+													<option value=""></option>
+													<option value="珠江公寓A区">珠江公寓A区</option>
+													<option value="珠江公寓B区">珠江公寓B区</option>
+													<option value="珠江公寓C区">珠江公寓C区</option>
+													<option value="珠江公寓D区">珠江公寓D区</option>
+													<option value="图书錧(原6号宿舍楼)">图书錧(原6号宿舍楼)</option>
+													<option value="1号宿舍楼(原7号楼)">1号宿舍楼(原7号楼)</option>
+													<option value="2号宿舍楼(原8号楼)">2号宿舍楼(原8号楼)</option>
+													<option value="3号宿舍楼(原9号楼)">3号宿舍楼(原9号楼)</option>
+													<option value="4号宿舍楼(原10号楼)">4号宿舍楼(原10号楼)</option>
+													<option value="5号宿舍楼">5号宿舍楼</option>
+													<option value="6号宿舍楼(原11号楼)">6号宿舍楼(原11号楼)</option>
+													<option value="7号宿舍楼(12号楼)">7号宿舍楼(原12号楼)</option>
+													<option value="8号宿舍楼(原13号楼)">8号宿舍楼(原13号楼)</option>
+												</select>
+												</div>
+
+												<div class="form-group form-group-label">
+													<label class="floating-label" for="doc_floating_label_example_room">宿舍号</label>
+													<input name="room" class="form-control" id="doc_floating_label_example_room" type="text" required minlength="2" maxlength="28" onkeyup="value=value.replace(/[/W]/g,'') "onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^/d]/g,''))">
+												</div>
+
+								                <div class="form-group form-group-label">
+												<label class="floating-label" for="doc_floating_label_example_select_gzlx">故障类型</label>
+												<select name="type" class="form-control" id="doc_floating_label_example_select_gzlx"  minlength="4"> 
+													<option value=""></option>
+							                        <option value="电脑硬件故障">电脑硬件故障</option> 
+							                        <option value="系统故障">系统故障</option>
+							                        <option value="周边配件故障">周边配件故障</option> 
+							                        <option value="网络故障">网络故障</option> 
+							                        <option value="软件故障">软件故障</option> 
+							                    </select> 
+								                </div>
+
+								                <div class="form-group form-group-label">
+													<label class="floating-label" for="doc_floating_label_phone">手机号码</label>
+													<input name="phone" class="form-control" id="doc_floating_label_phone" type="number" required onkeyup="value=value.replace(/[^/d/0-9]/g,'') "onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^/d/0-9]/g,''))" maxlength="12" minlength="9">
+												</div>
+
+								                <div class="form-group form-group-label">
+												<label class="floating-label" for="doc_floating_label_example_textarea_gzms">故障描述</label>
+												<textarea name="Description" class="form-control" id="doc_floating_label_example_textarea_gzms" rows="3" required minlength="6" maxlength="3200" onkeyup="value=value.replace(/[^\a-z\A-Z\0-9\u4E00-\u9FA5\@\.]/g,'')"></textarea>
+												</div>
+												<a class="btn btn-block waves-attach waves-button waves-effect" data-toggle="modal" href="#doc_modal_example_add">提交</a>
+								      			</fieldset>
+											</form>
+										</div>
+										<div class="tab-pane fade" id="doc_tab_example_2">
+											<p>请不要禁止本站弹窗，否则将无法查询</p>
+											<form id="reg_check" action="engine.php?action=check" method="POST" >
+											<fieldset>
+												<div class="form-group form-group-label">
+													<label class="floating-label" for="doc_floating_label_name">姓名</label>
+													<input name="name" class="form-control" id="doc_floating_label_name" type="text" required minlength="2" maxlength="24" onkeyup="value=value.replace(/[^\a-z\A-Z\0-9\u4E00-\u9FA5]/g,'')" >
+												</div>
+												<div class="form-group form-group-label">
+													<label class="floating-label" for="doc_floating_label_phone">手机号码</label>
+													<input name="phone" class="form-control" id="doc_floating_label_phone" type="number" required onkeyup="value=value.replace(/[^/d/0-9]/g,'') "onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^/d/0-9]/g,''))" maxlength="12" minlength="9">
+												</div>
+												<a class="btn btn-block waves-attach waves-button waves-effect" data-toggle="modal" href="#doc_modal_example_check">查询</a>
+											</fieldset>
+											</form>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>	
+					</section>
+				</div>
+			</div>
+		</div>
+	</main>
+	<footer class="footer">
+		<div class="container">
+			<p>Copyright © 2016 ByDisk Developers</p>
+		</div>
+	</footer>
+	<div aria-hidden="true" class="modal fade" id="doc_modal_example_add" role="dialog" tabindex="-1" style="display: none;">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-heading">
+					<a class="modal-close" data-dismiss="modal">×</a>
+					<h2 class="modal-title">服务条款与注意事项</h2>
+				</div>
+				<div class="modal-inner">
+					<p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+					<p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+					<p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+					<p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+					<p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+					<p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+				</div>
+				<div class="modal-footer">
+					<p class="text-right"><button class="btn btn-flat btn-brand waves-attach waves-button waves-effect" data-dismiss="modal" type="button">Close</button><a class="btn btn-flat btn-brand waves-attach waves-button waves-effect" data-dismiss="modal" href="javascript:void(0);" onclick="addformSubmit()" type="button">OK</a></p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div aria-hidden="true" class="modal fade" id="doc_modal_example_check" role="dialog" tabindex="-1" style="display: none;">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-heading">
+					<a class="modal-close" data-dismiss="modal">×</a>
+					<h2 class="modal-title">服务条款与注意事项</h2>
+				</div>
+				<div class="modal-inner">
+					<p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+					<p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+					<p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+					<p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+					<p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+					<p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+				</div>
+				<div class="modal-footer">
+					<p class="text-right"><button class="btn btn-flat btn-brand waves-attach waves-button waves-effect" data-dismiss="modal" type="button">Close</button><button class="btn btn-flat btn-brand waves-attach waves-button waves-effect" data-dismiss="modal" href="javascript:void(0);" onclick="checkformSubmit()" type="button">OK</button></p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="fbtn-container">
+		<div class="fbtn-inner">
+			<a class="fbtn fbtn-brand-accent fbtn-lg" data-toggle="dropdown"><span class="fbtn-text">Links</span><span class="fbtn-ori icon">apps</span><span class="fbtn-sub icon">close</span></a>
+			<div class="fbtn-dropdown">
+				<a class="fbtn" href="https://developers.bydisk.com/" target="_blank"><span class="fbtn-text">开发者社区主页</span><span class="icon">home</span></a>
+				<a class="fbtn fbtn-brand" href="http://weibo.com/347898945" target="_blank"><span class="fbtn-text">关注站长微博</span><span class="icon">share</span></a>
+			</div>
+		</div>
+	</div>
+
+	<!-- js -->
+	<script src="../js/base.min.js"></script>
+	<!-- 谷歌统计 -->
+	<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	  ga('create', 'UA-74730081-2', 'auto');
+	  ga('send', 'pageview');
+
+	</script>
+
+	<!-- js for doc -->
+	<script src="../js/project.min.js"></script>
+</body>
+</html>
