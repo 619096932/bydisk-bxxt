@@ -14,7 +14,7 @@ $user_id=$_SESSION['username'];
 $token=$_POST['token'];  //API Token
 $ack=md5($_POST['ack']);  //API AccessKey
 
-/////////// Access_Log //////////////
+/////////// Access_Log // 默认不开启 ////////////
 //$filename = "http://ip.taobao.com/service/getIpInfo.php?ip=".$address;
 //json_log = json_decode(file_get_contents($filename));
 //$location_add=$json_log->data->city.$json_log->data->isp;
@@ -40,16 +40,11 @@ $top_done="管理员已完成";
 //后台接单接口//
 ////////////////
 if($_GET['action'] == "add"){
-
 	$stmt_api_check_user=$conn->prepare("SELECT * from api_login where token=? and AccessKeyMD5=? limit 1");
 	$stmt_api_check_user->bind_param("ss", $token,$ack);
 	$stmt_api_check_user->execute();
-	//$stmt_api_check_user->bind_result();
 	$result_api_check=$stmt_api_check_user->get_result();
 	$row_api_check=$result_api_check->fetch_assoc();
-	//var_dump($token);
-	//var_dump(md5($ack));
-	//var_dump($row_api_check['Name']);
 	session_start(); 
 		if(!isset($_SESSION['userid'])&&empty($row_api_check)){  
 		    header("Location:page-login.html");  
@@ -87,7 +82,6 @@ if ($_GET['action'] == "done") {
 	$stmt_api_check_user=$conn->prepare("SELECT * from api_login where token=? and AccessKeyMD5=? limit 1");
 	$stmt_api_check_user->bind_param("ss", $token,$ack);
 	$stmt_api_check_user->execute();
-	//$stmt_api_check_user->bind_result();
 	$result_api_check=$stmt_api_check_user->get_result();
 	$row_api_check=$result_api_check->fetch_assoc();
 	session_start(); 
@@ -126,11 +120,8 @@ if ($_GET['action'] == "cancel") {
 	$stmt_api_check_user=$conn->prepare("SELECT * from api_login where token=? and AccessKeyMD5=? limit 1");
 	$stmt_api_check_user->bind_param("ss", $token,$ack);
 	$stmt_api_check_user->execute();
-	//$stmt_api_check_user->bind_result();
 	$result_api_check=$stmt_api_check_user->get_result();
 	$row_api_check=$result_api_check->fetch_assoc();
-
-	//session_start(); 
 		if(!isset($_SESSION['userid'])&&empty($row_api_check)){  
 		    header("Location:page-login.html");  
 		    exit();  
@@ -138,7 +129,6 @@ if ($_GET['action'] == "cancel") {
 	$stmt_cancel = $conn->prepare("SELECT * from avada where DATATIME=? limit 1");
 	$stmt_cancel->bind_param("s", $datatime);
 	$stmt_cancel->execute()or die(取消订单失败请检查是否非法);
-	//$stmt_cancel->bind_result();
 	$result = $stmt_cancel->get_result();
 	$rows= $result->fetch_assoc();
 		if ($rows['Personnel']!=$jdname) {
@@ -187,7 +177,6 @@ if ($_GET['action'] == "wor-add") {
 	$stmt_wor_add = $conn->prepare("SELECT * from avada where DATATIME=? limit 1");
 	$stmt_wor_add->bind_param("s", $datatime);
 	$stmt_wor_add->execute()or die(举报订单失败请检查是否非法);
-	//$stmt_wor_add->bind_result();
 	$result = $stmt_wor_add->get_result();
 	$rows= $result->fetch_assoc();
 	if ($rows['NOW'] == $none) {
@@ -290,7 +279,6 @@ if ($_GET['action'] == "wor-done") {
 	$stmt_wor_done = $conn->prepare("SELECT TYPE from login where username=? limit 1");
 	$stmt_wor_done->bind_param("s", $user_id);
 	$stmt_wor_done->execute()or die(哎呀发生错误啦);
-	//$stmt_wor_done->bind_result();
 	$result = $stmt_wor_done->get_result();
 	$rows_super = $result->fetch_assoc(); 
 		if ($rows_super['TYPE'] == 'SUPER') {
@@ -319,7 +307,6 @@ if ($_GET['action'] == "wor-cancel") {
 	$stmt_wor_cancel = $conn->prepare("SELECT TYPE from login where username=? limit 1");
 	$stmt_wor_cancel->bind_param("s", $user_id);
 	$stmt_wor_cancel->execute()or die(哎呀发生错误啦);
-	//$stmt_wor_cancel->bind_result();
 	$result = $stmt_wor_cancel->get_result();
 	$rows_super = $result->fetch_assoc();
 		if ($rows_super['TYPE'] == 'SUPER') {
@@ -357,7 +344,6 @@ if ($_GET['action'] == "register") {
  	$stmt_reg_add_check=$conn->prepare("SELECT NOW from avada where RGID=? Order by DATATIME DESC limit 1");
  	$stmt_reg_add_check->bind_param("s", $reg_RGID);
  	$stmt_reg_add_check->execute();
- 	//$stmt_reg_add_check->bind_result();
  	$result=$stmt_reg_add_check->get_result();
  	$rows = $result->fetch_assoc();
  	if (!$rows) {
@@ -418,7 +404,6 @@ if ($_GET['action'] == "check") {
 	$stmt_check = $conn->prepare("SELECT * from avada where name=? and PHONE=? Order by DATATIME DESC limit 1");
 	$stmt_check->bind_param("ss", $check_name, $check_phone);
 	$stmt_check->execute()or die(查询订单失败请稍后再试);
-	//$stmt_check->bind_result();
 	$result = $stmt_check->get_result();
 	$rows = $result->fetch_assoc();
 		if (!$rows) {
@@ -494,7 +479,6 @@ if ($_GET['action'] == "register_user") {
 		$stmt_reg_user_check=$conn->prepare("SELECT * from login where username=? limit 1");
 		$stmt_reg_user_check->bind_param("s", $reg_user_name);
 		$stmt_reg_user_check->execute();
-		//$stmt_reg_user_check->bind_result();
 		$result=$stmt_reg_user_check->get_result();
 		$rows=$result->fetch_assoc();
 		if ($rows['NOW'] == "WAIT") {
@@ -530,7 +514,6 @@ if ($_GET['action'] == "user_check_pass") {
 	$stmt_user_check_pass_supercheck=$conn->prepare("SELECT TYPE from login where username=? limit 1");
 	$stmt_user_check_pass_supercheck->bind_param("s", $user_id);
 	$stmt_user_check_pass_supercheck->execute()or die(请稍后再试);
-	//$stmt_user_check_pass_supercheck->bind_result();
 	$result = $stmt_user_check_pass_supercheck->get_result();
 	$rows_super = $result->fetch_assoc();
 	if ($rows_super['TYPE'] == 'SUPER') {
@@ -553,7 +536,6 @@ if ($_GET['action'] == "user_check_cancel") {
 	$stmt_user_check_cancel_supercheck=$conn->prepare("SELECT TYPE from login where username=? limit 1");
 	$stmt_user_check_cancel_supercheck->bind_param("s", $user_id);
 	$stmt_user_check_cancel_supercheck->execute();
-	//$stmt_user_check_cancel_supercheck->bind_result();
 	$result=$stmt_user_check_cancel_supercheck->get_result();
 	$rows_super=$result->fetch_assoc();
 	if ($rows_super['TYPE'] == 'SUPER') {
@@ -573,15 +555,12 @@ if ($_GET['action']=="def_table") {
 	$stmt_def_table_user=$conn->prepare("SELECT * from api_login where token=? and AccessKeyMD5=? limit 1");
 	$stmt_def_table_user->bind_param("ss", $token,$ack);
 	$stmt_def_table_user->execute();
-	//$stmt_def_table_user->bind_result();
 	$result=$stmt_def_table_user->get_result();
 	$row=$result->fetch_assoc();
 	if (!empty($row)) {
-		//header('Content-type:text/json');
 		$stmt_user_data=$conn->prepare("SELECT * from avada where NOW=? ORDER BY DATATIME DESC");
 		$stmt_user_data->bind_param("s", $none);
 		$stmt_user_data->execute();
-		//$stmt_user_data->bind_result();
 		$result_user_data=$stmt_user_data->get_result();
 		while (!!$rows = mysqli_fetch_array($result_user_data)) {
 			foreach ($rows as $keys => $value) {
@@ -603,15 +582,12 @@ if ($_GET['action']=="def_intable") {
 	$stmt_def_intable_user=$conn->prepare("SELECT * from api_login where token=? and AccessKeyMD5=? limit 1");
 	$stmt_def_intable_user->bind_param("ss", $token,$ack);
 	$stmt_def_intable_user->execute();
-	//$stmt_def_intable_user->bind_result();
 	$result=$stmt_def_intable_user->get_result();
 	$row=$result->fetch_assoc();
 	if (!empty($row)) {
-		//header('Content-type:text/json');
 		$stmt_user_data=$conn->prepare("SELECT * from avada where NOW=? ORDER BY JDTIME DESC");
 		$stmt_user_data->bind_param("s", $run);
 		$stmt_user_data->execute();
-		//$stmt_user_data->bind_result();
 		$result_user_data=$stmt_user_data->get_result();
 		while (!!$rows = mysqli_fetch_array($result_user_data)) {
 			foreach ($rows as $keys => $value) {
@@ -633,15 +609,12 @@ if ($_GET['action']=="def_donetable") {
 	$stmt_def_donetable_user=$conn->prepare("SELECT * from api_login where token=? and AccessKeyMD5=? limit 1");
 	$stmt_def_donetable_user->bind_param("ss", $token,$ack);
 	$stmt_def_donetable_user->execute();
-	//$stmt_def_donetable_user->bind_result();
 	$result=$stmt_def_donetable_user->get_result();
 	$row=$result->fetch_assoc();
 	if (!empty($row)) {
-		//header('Content-type:text/json');
 		$stmt_user_data=$conn->prepare("SELECT * from avada where NOW=? ORDER BY DoneTIME DESC");
 		$stmt_user_data->bind_param("s", $done);
 		$stmt_user_data->execute();
-		//$stmt_user_data->bind_result();
 		$result_user_data=$stmt_user_data->get_result();
 		while (!!$rows = mysqli_fetch_array($result_user_data)) {
 			foreach ($rows as $keys => $value) {
